@@ -1,6 +1,7 @@
 import Input from '../ui/input/Input';
 import styled from 'styled-components';
 import {Link, useNavigate} from 'react-router-dom';
+import {IoIosSearch, IoIosClose} from 'react-icons/io';
 import React, {memo, useMemo, useState, useCallback} from 'react';
 
 const HeaderWrapper = styled.section`
@@ -36,15 +37,15 @@ const Searcher = styled.span`
     width: 500px;
     position: relative;
 `;
-const SearcherImg = styled.img`
+const SearcherImg = styled.span`
     z-index: 1;
     bottom: 8px;
     position: absolute;
 `;
-const CloseImg = styled.img`
+const CloseImg = styled.span`
     z-index: 1;
     right: 12%;
-    bottom: 12px;
+    bottom: 4px;
     cursor: pointer;
     position: absolute;
     display: ${({value}) => (value ? 'block' : 'none')};
@@ -110,9 +111,10 @@ const Header = memo(({api}) => {
                     </Link>
                 </HeaderHeading>
                 <Searcher>
-                    <SearcherImg src={'/icons/searcher.svg'} alt={'searcher'}/>
+                   
+                    <SearcherImg> <IoIosSearch/></SearcherImg>
                     <Input value={value} onChange={e => setValue(e.target.value)} placeholder={'Поиск...'}/>
-                    <CloseImg alt={'close'} value={value} src={'/icons/close.svg'} onClick={() => setValue('')}/>
+                    <CloseImg value={value} onClick={() => setValue('')}><IoIosClose/></CloseImg>
                 </Searcher>
                 <HeaderButton onClick={submitHandler}>Искать</HeaderButton>
                 <LogIn>Войти</LogIn>

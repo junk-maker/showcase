@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {GoChevronDown} from 'react-icons/go';
 import useOpen from '../../../hooks/open-hook';
 import React, {memo, useRef, useMemo, useEffect, useCallback} from 'react';
 
@@ -30,7 +31,7 @@ const DropdownSelected = styled.span`
     background-color: #fff;
     transition: all 200ms ease;
 `;
-const DropdownIcon = styled.img`
+const DropdownIcon = styled.span`
     width: 16px;
     height: 16px;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -116,7 +117,7 @@ const Dropdown = memo(({helpers, setType,  platform, setPlatform, placeholder}) 
                 <DropdownSelected ref={selectedRef}>
                     {platform ? platform.name : placeholder}
                 </DropdownSelected>
-                <DropdownIcon open={open} ref={iconRef} alt={'dropdown-arrow'} src={'./icons/dropdown-arrow.svg'}/>
+                <GoChevronDown/>
             </DropdownBox>
             <DropdownBottom open={open}>
                 {currentPlatform}
